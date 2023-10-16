@@ -1,0 +1,15 @@
+<button
+  mat-flat-button
+  color="primary"
+  class="mb-5"
+  (click)="openAlumnosDialog()"
+  >
+  <mat-icon>add</mat-icon>
+  Crear Alumno
+</button>
+
+<app-alumnos-tabla
+[dataSource]="alumnos"
+(editarAlumno)="onEditarAlumno($event)"
+(eliminarAlumno)="OnEliminarAlumno($event)">
+</app-alumnos-tabla>
