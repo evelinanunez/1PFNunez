@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Alumno } from '../../models';
 
 @Component({
   selector: 'app-usuarios-dialog',
@@ -12,12 +14,25 @@ export class UsuariosDialogComponent {
   usuariosForm : FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private matDialogRef : MatDialogRef <UsuariosDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public alumno?: Alumno,
   ){
     this.usuariosForm = this.fb.group({
-      nombre:[''],
-      apellido:[''],
-      email:['']
+      nombre:['',[Validators.required, Validators.minLength(5)]],
+      apellido:['',[Validators.required,Validators.minLength(5)]],
+      email:['',[Validators.required, Validators.email]]
     });
+    if(this.alumno){
+      this.usuariosForm.patchValue(this.alumno);
+    }
+  }
+
+  onSubmit() : void {
+    if (this.usuariosForm.invalid){
+      this.usuariosForm.markAllAsTouched();
+    }else{
+      this.matDialogRef.close(this.usuariosForm.value);
+    }
   }
 }

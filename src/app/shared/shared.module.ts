@@ -11,11 +11,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NombreCompletoPipe } from './pipes/nombre-completo.pipe';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
     SidebarComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    NombreCompletoPipe
   ],
   imports: [
     CommonModule,
@@ -34,7 +37,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    NombreCompletoPipe,
+    MatTableModule
   ]
 })
 export class SharedModule { }

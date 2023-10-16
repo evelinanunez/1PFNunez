@@ -2,9 +2,15 @@
   mat-flat-button
   color="primary"
   (click)="openUsuariosDialog()"
+  class="mb-5"
   >
   <mat-icon>add</mat-icon>
-  Crear Usuario
+  Crear Alumno
 </button>
 
-{{formulario | json}}
+
+<app-usuarios-table
+[dataSource]="alumnos"
+(eliminarAlumno)="OnEliminaralumno($event)"
+(editarAlumno)="onEditaralumno($event)"
+></app-usuarios-table>
