@@ -13,12 +13,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NombreCompletoPipe } from './pipes/nombre-completo.pipe';
 import { MatTableModule } from '@angular/material/table';
+import { Letra20Directive } from './directives/letra20.directive';
 
 @NgModule({
   declarations: [
     SidebarComponent,
     ToolbarComponent,
-    NombreCompletoPipe
+    NombreCompletoPipe,
+    Letra20Directive
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,8 @@ import { MatTableModule } from '@angular/material/table';
     MatFormFieldModule,
     MatDialogModule,
     NombreCompletoPipe,
-    MatTableModule
+    MatTableModule,
+    Letra20Directive
   ]
 })
 export class SharedModule { }
