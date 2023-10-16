@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Alumno } from '../../models';
+import { Usuario } from '../../models';
+
 
 
 @Component({
@@ -8,15 +9,15 @@ import { Alumno } from '../../models';
 })
 export class UsuariosTableComponent {
   @Input()
-  dataSource : Alumno[]= [];
+  dataSource : Usuario[]= [];
   //Nombre de las columnas de mi tabla
-  displayedColumns = ['id','nombrecompleto', 'email', 'acciones'];
+  displayedColumns = ['id','nombre','apellido', 'email', 'acciones'];
 
   @Output()
-  eliminarAlumno = new EventEmitter<number>();
+  eliminarUsuario = new EventEmitter<number>();
 
   @Output()
-  editarAlumno = new EventEmitter<Alumno>();
+  editarUsuario = new EventEmitter<Usuario>();
 }
 
 

@@ -5,12 +5,12 @@
   class="mb-5"
   >
   <mat-icon>add</mat-icon>
-  Crear Alumno
+  Crear Usuario
 </button>
 
 
 <app-usuarios-table
-[dataSource]="alumnos"
-(eliminarAlumno)="OnEliminaralumno($event)"
-(editarAlumno)="onEditaralumno($event)"
+[dataSource]="usuarios"
+(eliminarUsuario)="OnEliminarUsuario($event)"
+(editarUsuario)="onEditarUsuario($event)"
 ></app-usuarios-table>

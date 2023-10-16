@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { UsuariosDialogComponent } from './components/usuarios-dialog/usuarios-dialog.component';
-import { Alumno } from './models';
+import { Usuario } from './models';
+
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Alumno } from './models';
 })
 export class UsuariosComponent {
 
-  alumnos : Alumno[] = [
+  usuarios : Usuario[] = [
     {
       id: 1,
       nombre: 'Evelina',
@@ -28,6 +29,7 @@ export class UsuariosComponent {
 
   constructor(
     private matDialog : MatDialog,
+
   ){}
 
   openUsuariosDialog() : void{
@@ -36,10 +38,10 @@ export class UsuariosComponent {
     .subscribe({
       next:(valor) =>{
         if(!!valor){
-          this.alumnos= [
-            ...this.alumnos,
+          this.usuarios= [
+            ...this.usuarios,
             {
-              ...valor, id: this.alumnos.length+1,
+              ...valor, id: this.usuarios.length+1,
             }
           ];
         }
@@ -47,13 +49,22 @@ export class UsuariosComponent {
     });
   }
 
-  OnEliminaralumno ( idALumno : number) : void{
-    this.alumnos = this.alumnos.filter((a) => a.id !== idALumno);
+  OnEliminarUsuario ( idUsuario : number) : void{
+    this.usuarios = this.usuarios.filter((a) => a.id !== idUsuario);
   }
 
-  onEditaralumno ( alumno : Alumno) : void{
+  onEditarUsuario ( usuario : Usuario) : void{
     this.matDialog.open(UsuariosDialogComponent,{
-      data :alumno,
+      data :usuario,
+    })
+    .afterClosed()
+    .subscribe({
+      next : (v)=>{
+        if(!!v){
+          this.usuarios = this.usuarios.map((u)=>
+          u.id === usuario.id ? {...u,...v}: u);
+        }
+      }
     });
   }
 }

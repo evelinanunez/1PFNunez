@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Alumno } from '../../models';
+import { Usuario } from '../../models';
+
 
 @Component({
   selector: 'app-usuarios-dialog',
@@ -16,15 +17,15 @@ export class UsuariosDialogComponent {
   constructor(
     private fb: FormBuilder,
     private matDialogRef : MatDialogRef <UsuariosDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public alumno?: Alumno,
+    @Inject(MAT_DIALOG_DATA) public usuario?: Usuario,
   ){
     this.usuariosForm = this.fb.group({
       nombre:['',[Validators.required, Validators.minLength(5)]],
       apellido:['',[Validators.required,Validators.minLength(5)]],
       email:['',[Validators.required, Validators.email]]
     });
-    if(this.alumno){
-      this.usuariosForm.patchValue(this.alumno);
+    if(this.usuario){
+      this.usuariosForm.patchValue(this.usuario);
     }
   }
 
