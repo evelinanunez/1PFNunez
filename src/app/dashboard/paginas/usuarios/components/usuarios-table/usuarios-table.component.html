@@ -31,6 +31,13 @@
          {{Usuario.email}}
       </td>
    </ng-container>
+   <!-- Rol Column -->
+   <ng-container matColumnDef="rol">
+    <th mat-header-cell *matHeaderCellDef> Rol  </th>
+    <td mat-cell *matCellDef="let Usuario">
+       {{Usuario.rol}}
+    </td>
+ </ng-container>
  <!-- Email  Column -->
   <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>

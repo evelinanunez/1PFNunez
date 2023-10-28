@@ -2,28 +2,30 @@ import { Component } from '@angular/core';
 import { Alumno } from './models';
 import { MatDialog } from '@angular/material/dialog';
 import { AlumnosDialogComponent } from './componentes/alumnos-dialog/alumnos-dialog.component';
+import { AlumnosService } from './alumnos.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-alumnos',
   templateUrl: './alumnos.component.html'
 })
 export class AlumnosComponent {
-  alumnos : Alumno[] = [
-    {
-      id: 1,
-      nombre: 'Evelina',
-      apellido: 'Nuñez',
-      email: 'eve@gmail.com'
-    },
-    {
-      id: 2,
-      nombre: 'Cristina',
-      apellido: 'Nuñez',
-      email: 'cris@gmail.com'
-    }
-  ];
+ // alumnos$ : Observable<Alumno[]>;
 
-  constructor (private matDialog : MatDialog){}
+  alumnos : Alumno[] = [];
+
+  constructor (private matDialog : MatDialog,
+               private alumnoServicio : AlumnosService
+    ){
+  //this.alumnos$= this.alumnoServicio.traerAlumnos();
+  this.alumnoServicio.traerAlumnos().subscribe({
+    next :(v) =>{
+      this.alumnos = v;
+    },
+    error :()=>{},
+    complete: ()=>{},
+  });
+  }
 
   openAlumnosDialog() :void {
     this.matDialog.open(AlumnosDialogComponent)

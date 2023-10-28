@@ -16,7 +16,7 @@ export class UsuariosTableComponent {
   @Input()
   dataSource : Usuario[]= [];
   //Nombre de las columnas de mi tabla
-  displayedColumns = ['id','nombre','apellido', 'email', 'acciones'];
+  displayedColumns = ['id','nombre','apellido', 'email','rol', 'acciones'];
 
   @Output()
   eliminarUsuario = new EventEmitter<number>();

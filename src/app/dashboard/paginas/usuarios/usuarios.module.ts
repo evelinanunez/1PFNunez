@@ -21,6 +21,6 @@ import { UsuarioDetalleComponent } from './components/usuario-detalle/usuario-de
   ],
   exports:[
     UsuariosComponent
-  ]
+  ],
 })
 export class UsuariosModule { }

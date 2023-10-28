@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { UsuariosDialogComponent } from './components/usuarios-dialog/usuarios-dialog.component';
 import { Usuario } from './models';
+import { UsuariosService } from './usuarios.service';
 
 
 
@@ -11,26 +12,23 @@ import { Usuario } from './models';
 })
 export class UsuariosComponent {
 
-  usuarios : Usuario[] = [
-    {
-      id: 1,
-      nombre: 'Evelina',
-      apellido: 'Nuñez',
-      email: 'eve@gmail.com'
-    },
-    {
-      id: 2,
-      nombre: 'Cristina',
-      apellido: 'Nuñez',
-      email: 'cris@gmail.com'
-    }
-  ];
+  usuarios : Usuario[] = [];
   formulario ='';
 
   constructor(
     private matDialog : MatDialog,
+    private usuarioServicio : UsuariosService
 
-  ){}
+  ){
+    this.usuarioServicio.traerUsuarios().subscribe({
+      next :(v)=>{
+        this.usuarios= v;
+      },
+      error :()=>{},
+      complete: ()=>{},
+    });
+  }
+
 
   openUsuariosDialog() : void{
     this.matDialog.open(UsuariosDialogComponent)

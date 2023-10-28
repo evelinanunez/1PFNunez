@@ -33,20 +33,16 @@ const routes : Routes = [
       {
         path: 'usuarios/detalle/:id',
         component:UsuarioDetalleComponent
-      },
-      {
-        path:'**',
-        redirectTo: 'home'
       }
     ]
   },
   {
-    path: 'auth',
-    component: AuthComponent
+    path:'**',
+    redirectTo: 'dashboard'
   },
   {
-    path: '**',
-    redirectTo: 'auth'
+    path: 'auth',
+    component: AuthComponent
   }
 ];
 
