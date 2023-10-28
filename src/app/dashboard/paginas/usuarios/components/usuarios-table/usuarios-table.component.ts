@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Usuario } from '../../models';
+import { Router } from '@angular/router';
 
 
 
@@ -8,6 +9,10 @@ import { Usuario } from '../../models';
   templateUrl: './usuarios-table.component.html'
 })
 export class UsuariosTableComponent {
+
+  constructor( private router : Router){
+
+  }
   @Input()
   dataSource : Usuario[]= [];
   //Nombre de las columnas de mi tabla
@@ -18,6 +23,10 @@ export class UsuariosTableComponent {
 
   @Output()
   editarUsuario = new EventEmitter<Usuario>();
+
+  verDetalle( usuarioId : number): void{
+    this.router.navigate(['dashboard','usuarios','detalle', usuarioId]);
+  }
 }
 
 

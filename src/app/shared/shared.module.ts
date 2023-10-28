@@ -14,6 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NombreCompletoPipe } from './pipes/nombre-completo.pipe';
 import { MatTableModule } from '@angular/material/table';
 import { Letra20Directive } from './directives/letra20.directive';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { Letra20Directive } from './directives/letra20.directive';
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    RouterModule
   ],
   exports: [
     SidebarComponent,
@@ -42,7 +44,8 @@ import { Letra20Directive } from './directives/letra20.directive';
     MatDialogModule,
     NombreCompletoPipe,
     MatTableModule,
-    Letra20Directive
+    Letra20Directive,
+    RouterModule
   ]
 })
 export class SharedModule { }

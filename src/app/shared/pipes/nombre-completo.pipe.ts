@@ -8,7 +8,6 @@ import { Alumno } from 'src/app/dashboard/paginas/alumnos/models';
 export class NombreCompletoPipe implements PipeTransform {
 
   transform(value: Alumno, ...args: unknown[]): unknown {
-    console.log('Value',value);
 ;    return value.nombre + ' ' + value.apellido;
   }
 
