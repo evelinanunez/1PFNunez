@@ -13,12 +13,6 @@ export class CursosComponent {
 
   cursos : Curso[] = [];
 
-  @Output()
-  eliminarCurso = new EventEmitter<number>();
-
-  @Output()
-  editarCurso = new EventEmitter<Curso>();
-
 
   constructor(private cursoServicio : CursosService,
               private matDialog : MatDialog){

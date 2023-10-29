@@ -25,10 +25,10 @@
             <h1>{{curso.costo}}</h1>
           </mat-card-content>
           <mat-card-actions>
-            <button (click)="eliminarCurso.emit(curso.id)" mat-icon-button color="warn">
+            <button (click)="OnEliminarCurso(curso.id)" mat-icon-button color="warn">
               <mat-icon>delete</mat-icon>
              </button>
-             <button (click)="editarCurso.emit(curso)" mat-icon-button color="primary">
+             <button (click)="OnEditarCurso(curso)" mat-icon-button color="primary">
               <mat-icon>edit</mat-icon>
              </button>
              <button mat-icon-button color="accent">
