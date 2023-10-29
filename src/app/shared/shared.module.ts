@@ -15,7 +15,7 @@ import { NombreCompletoPipe } from './pipes/nombre-completo.pipe';
 import { MatTableModule } from '@angular/material/table';
 import { Letra20Directive } from './directives/letra20.directive';
 import { RouterModule } from '@angular/router';
-
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -45,7 +45,8 @@ import { RouterModule } from '@angular/router';
     NombreCompletoPipe,
     MatTableModule,
     Letra20Directive,
-    RouterModule
+    RouterModule,
+    MatCardModule
   ]
 })
 export class SharedModule { }
