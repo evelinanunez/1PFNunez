@@ -22,7 +22,8 @@ export class UsuariosDialogComponent {
     this.usuariosForm = this.fb.group({
       nombre:['',[Validators.required, Validators.minLength(5)]],
       apellido:['',[Validators.required,Validators.minLength(5)]],
-      email:['',[Validators.required, Validators.email]]
+      email:['',[Validators.required, Validators.email]],
+      rol: ['',[Validators.required]]
     });
     if(this.usuario){
       this.usuariosForm.patchValue(this.usuario);

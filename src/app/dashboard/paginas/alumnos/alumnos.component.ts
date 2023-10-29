@@ -10,14 +10,16 @@ import { Observable } from 'rxjs';
   templateUrl: './alumnos.component.html'
 })
 export class AlumnosComponent {
- // alumnos$ : Observable<Alumno[]>;
 
+  // alumnos$ : Observable <Alumno[]>;
   alumnos : Alumno[] = [];
 
   constructor (private matDialog : MatDialog,
                private alumnoServicio : AlumnosService
     ){
-  //this.alumnos$= this.alumnoServicio.traerAlumnos();
+
+  // this.alumnos$ = alumnoServicio.traerAlumnos();
+
   this.alumnoServicio.traerAlumnos().subscribe({
     next :(v) =>{
       this.alumnos = v;
@@ -56,7 +58,7 @@ export class AlumnosComponent {
     .subscribe({
       next:(v) =>{
         if(!!v){
-          this.alumnos = this.alumnos.map((u)=>
+          this.alumnos =  this.alumnos.map((u)=>
           u.id === alumno.id ? { ...u, ...v } : u);
 
         }

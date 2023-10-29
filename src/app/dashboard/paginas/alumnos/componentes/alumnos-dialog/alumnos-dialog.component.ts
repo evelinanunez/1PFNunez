@@ -19,9 +19,13 @@ export class AlumnosDialogComponent {
     this.alumnosForm = this.fb.group({
       nombre:['',[Validators.required, Validators.minLength(5)]],
       apellido:['',[Validators.required,Validators.minLength(5)]],
-      email:['',[Validators.required, Validators.email]]
+      email:['',[Validators.required, Validators.email]],
+      dni: ['',[Validators.required]],
+      telefono: ['',[Validators.required]]
+      // fechaNacimiento: ['',[Validators.required]]
     });
     if(this.alumno){
+      this.alumno.fechaNacimiento.getDate();
       this.alumnosForm.patchValue(this.alumno);
     }
   }

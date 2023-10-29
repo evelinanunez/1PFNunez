@@ -9,7 +9,7 @@ export class AlumnosTablaComponent {
   @Input()
   dataSource: Alumno[]= [];
 
-  displayedColumns = ['id','nombrecompleto', 'email','dni','telefono','fechaNacimiento', 'acciones'];
+  displayedColumns = ['id','nombrecompleto', 'email','dni','telefono' /*,'fechaNacimiento'*/, 'acciones'];
 
   @Output()
   eliminarAlumno = new EventEmitter<number>();
