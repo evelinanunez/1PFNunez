@@ -1,3 +1,22 @@
+<h1 appLetra20>ABM de Alumnos</h1>
+<button
+  mat-flat-button
+  color="primary"
+  class="mb-5"
+  (click)="openCursoDialog()"
+  >
+  <mat-icon>add</mat-icon>
+  Crear Curso
+</button>
+
+
+<app-cursos-tabla
+[dataSource]="cursos"
+(editarCurso)="OnEditarCurso($event)"
+(eliminarCurso)="OnEliminarCurso($event)">
+</app-cursos-tabla>
+
+<!--
 
 <button
   mat-flat-button
@@ -25,7 +44,7 @@
             <h1>{{curso.costo}}</h1>
           </mat-card-content>
           <mat-card-actions>
-            <button (click)="OnEliminarCurso(curso.id)" mat-icon-button color="warn">
+            <button (click)="OnEliminarCurso (curso.id)" mat-icon-button color="warn">
               <mat-icon>delete</mat-icon>
              </button>
              <button (click)="OnEditarCurso(curso)" mat-icon-button color="primary">
@@ -40,3 +59,4 @@
       </div>
   </div>
 </div>
+ -->

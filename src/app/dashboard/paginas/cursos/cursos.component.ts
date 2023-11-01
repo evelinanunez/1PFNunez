@@ -34,7 +34,7 @@ export class CursosComponent {
             this.cursos = [
               ...this.cursos,
               {
-                ...curso , id : this.cursos.length +1,
+                ...curso , id: this.cursos.length+1,
               }
             ]
           }
@@ -56,7 +56,7 @@ export class CursosComponent {
       next : ((curso)=>{
         if(!!curso){
           this.cursos = this.cursos.map((c)=>
-          c.id === curso.id ? {...c, ...curso} : curso);
+          c.id === curso.id ? {...c, ...curso} : c);
         }
       })
     });

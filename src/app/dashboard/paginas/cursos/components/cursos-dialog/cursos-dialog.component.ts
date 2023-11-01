@@ -14,11 +14,10 @@ export class CursosDialogComponent {
 
    constructor(
               private fb : FormBuilder,
-              private marDialogRef : MatDialogRef<CursosDialogComponent>,
+              private matDialogRef : MatDialogRef<CursosDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public Curso?: Curso
    ){
     this.cursosForm = this.fb.group({
-      id: ['',[Validators.required]],
       nombre: ['',[Validators.required]],
       descripcion: ['',[Validators.required]],
       instructor: ['',[Validators.required]],
@@ -37,10 +36,11 @@ export class CursosDialogComponent {
    }
 
    onSubmit(): void {
+    debugger
     if(this.cursosForm.invalid){
       this.cursosForm.markAllAsTouched();
     }else{
-      this.marDialogRef.close(this.cursosForm.value);
+      this.matDialogRef.close(this.cursosForm.value);
     }
    }
 
