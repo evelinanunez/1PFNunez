@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Usuario } from '../../models';
 
 @Component({
   selector: 'app-usuario-detalle',

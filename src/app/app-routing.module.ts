@@ -7,6 +7,7 @@ import { CursosComponent } from './dashboard/paginas/cursos/cursos.component';
 import { AlumnosComponent } from './dashboard/paginas/alumnos/alumnos.component';
 import { UsuariosComponent } from './dashboard/paginas/usuarios/usuarios.component';
 import { UsuarioDetalleComponent } from './dashboard/paginas/usuarios/components/usuario-detalle/usuario-detalle.component';
+import { AlumnosDetalleComponent } from './dashboard/paginas/alumnos/componentes/alumnos-detalle/alumnos-detalle.component';
 
 
 const routes : Routes = [
@@ -18,13 +19,19 @@ const routes : Routes = [
         path: 'home',
         component: HomeComponent
       },
+
       {
         path:'cursos',
         component: CursosComponent
       },
+
       {
         path: 'alumnos',
         component: AlumnosComponent
+      },
+      {
+        path: 'alumnos/detalle/:id',
+        component: AlumnosDetalleComponent,
       },
       {
         path: 'usuarios',
