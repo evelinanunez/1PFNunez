@@ -4,6 +4,7 @@ import { CursosComponent } from './cursos.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CursosDialogComponent } from './components/cursos-dialog/cursos-dialog.component';
 import { CursosTablaComponent } from './components/cursos-tabla/cursos-tabla.component';
+import { CursosRoutingModule } from './cursos-routing.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { CursosTablaComponent } from './components/cursos-tabla/cursos-tabla.com
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    CursosRoutingModule
   ],
   exports:[
     CursosComponent

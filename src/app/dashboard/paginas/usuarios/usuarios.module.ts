@@ -5,6 +5,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { UsuariosDialogComponent } from './components/usuarios-dialog/usuarios-dialog.component';
 import { UsuariosTableComponent } from './components/usuarios-table/usuarios-table.component';
 import { UsuarioDetalleComponent } from './components/usuario-detalle/usuario-detalle.component';
+import { UsuariosRoutingModule } from './usuarios-routing.module';
 
 
 
@@ -17,7 +18,8 @@ import { UsuarioDetalleComponent } from './components/usuario-detalle/usuario-de
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    UsuariosRoutingModule
   ],
   exports:[
     UsuariosComponent

@@ -5,6 +5,8 @@ import { SharedModule } from '../shared/shared.module';
 import { UsuariosModule } from './paginas/usuarios/usuarios.module';
 import { AlumnosModule } from './paginas/alumnos/alumnos.module';
 import { CursosModule } from './paginas/cursos/cursos.module';
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { HomeModule } from './paginas/home/home.module';
 
 
 
@@ -15,9 +17,11 @@ import { CursosModule } from './paginas/cursos/cursos.module';
   imports: [
     CommonModule,
     SharedModule,
-    UsuariosModule,
-    AlumnosModule,
-    CursosModule
+    //UsuariosModule,
+    //AlumnosModule,
+    //CursosModule,
+    HomeModule,
+    DashboardRoutingModule
   ],
   exports:[
     DashboardComponent

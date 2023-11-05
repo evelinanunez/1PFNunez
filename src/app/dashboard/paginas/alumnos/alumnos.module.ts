@@ -4,6 +4,7 @@ import { AlumnosDialogComponent } from './componentes/alumnos-dialog/alumnos-dia
 import { AlumnosTablaComponent } from './componentes/alumnos-tabla/alumnos-tabla.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AlumnosComponent } from './alumnos.component';
+import { AlumnosRoutingModule } from './alumnos-routing.module';
 
 
 
@@ -15,7 +16,8 @@ import { AlumnosComponent } from './alumnos.component';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    AlumnosRoutingModule
   ],
   exports:[
     AlumnosComponent
