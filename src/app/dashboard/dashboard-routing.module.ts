@@ -38,7 +38,11 @@ const routes : Routes =[
       //   path: 'usuarios/detalle/:id',
       //   component:UsuarioDetalleComponent
       // }
-    ]
+      {
+        path: '**',
+        redirectTo: 'home',
+      }
+    ],
   }
 ]
 @NgModule({

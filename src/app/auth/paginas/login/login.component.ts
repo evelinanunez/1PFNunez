@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,4 +10,33 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  loginForm : FormGroup;
+
+
+  constructor(private authService: AuthService,
+              private router: Router,
+              private fb :FormBuilder
+    ) {
+      this.loginForm = this.fb.group({
+        email: ['', [Validators.required, Validators.email]],
+        password :['', [Validators.required]],
+      });
+  }
+
+  login(): void {
+    this.authService.login().subscribe({
+      next : (authServer)=> {
+        if(!!authServer){
+          this.router.navigate(['/dashboard']);
+        }
+      }
+    });
+  }
+  // login(): void {
+  //   if (this.loginForm.invalid) {
+  //     this.loginForm.markAllAsTouched();
+  //   } else {
+  //     this.authService.login(this.loginForm.getRawValue());
+  //   }
+  // }
 }
