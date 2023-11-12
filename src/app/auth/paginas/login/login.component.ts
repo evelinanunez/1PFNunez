@@ -24,13 +24,11 @@ export class LoginComponent {
   }
 
   login(): void {
-    this.authService.login().subscribe({
-      next : (authServer)=> {
-        if(!!authServer){
-          this.router.navigate(['/dashboard']);
-        }
-      }
-    });
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+    } else {
+      this.authService.login(this.loginForm.getRawValue());
+    }
   }
   // login(): void {
   //   if (this.loginForm.invalid) {

@@ -25,7 +25,7 @@ export class AlumnosDialogComponent {
       // fechaNacimiento: ['',[Validators.required]]
     });
     if(this.alumno){
-      this.alumno.fechaNacimiento.getDate();
+     // this.alumno.fechaNacimiento.getDate();
       this.alumnosForm.patchValue(this.alumno);
     }
   }

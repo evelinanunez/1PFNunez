@@ -28,7 +28,7 @@ export class CursosComponent {
     this.cursos$ = this.cursoServicio.getCursos();
   }
 
-  openCursoDialog() :void{
+  addCursoDialog() :void{
       this.matDialog.open(CursosDialogComponent)
       .afterClosed()
       .subscribe({

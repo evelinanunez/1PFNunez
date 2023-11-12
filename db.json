@@ -73,24 +73,6 @@
   ],
   "alumnos": [
     {
-      "id": 1,
-      "nombre": "Juan",
-      "apellido": "Perez",
-      "email": "juan@gmail.com",
-      "dni": "123456789A",
-      "telefono": 1234567890,
-      "fechaNacimiento": "1995-05-10T00:00:00.000Z"
-    },
-    {
-      "id": 2,
-      "nombre": "María",
-      "apellido": "López",
-      "email": "maria@gmail.com",
-      "dni": "987654321B",
-      "telefono": 9876543210,
-      "fechaNacimiento": "1990-08-20T00:00:00.000Z"
-    },
-    {
       "id": 3,
       "nombre": "Luisa",
       "apellido": "González",
@@ -161,6 +143,14 @@
       "dni": "333333333J",
       "telefono": 3333333333,
       "fechaNacimiento": "1996-06-15T00:00:00.000Z"
+    },
+    {
+      "nombre": "Cleito",
+      "apellido": "Nuñez",
+      "email": "cleito@gmail.com",
+      "dni": "12222333",
+      "telefono": "2828288282",
+      "id": 11
     }
   ],
   "cursos": [
@@ -307,6 +297,14 @@
       "costo": "2400",
       "categoria": "Intermedio",
       "id": 13
+    },
+    {
+      "nombre": "Curso cocina",
+      "descripcion": "nuevas metodologías",
+      "instructor": "Evelina",
+      "costo": "2000",
+      "categoria": "Avanzado",
+      "id": 14
     }
   ]
 }

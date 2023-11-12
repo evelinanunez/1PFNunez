@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { LoginPayload } from './paginas/models';
 import { Usuario } from '../dashboard/paginas/usuarios/models';
+import { UsuarioLogin } from './models';
 
 @Injectable({
   providedIn: 'root'
@@ -13,20 +14,41 @@ export class AuthService {
 
    public authUser$ = this._authUser$.asObservable();
 
-  constructor( private router: Router) {}
+  constructor( private router: Router, private httpClient : HttpClient) {}
 
-  login(): Observable<Usuario> {
+  // login(): Observable<Usuario> {
 
-    const usuario: Usuario = {
-      id: 1,
-      nombre: 'Evelina',
-      apellido: 'Nuñez',
-      email: 'e@mail.com',
-      rol: 'admin'
-    }
-    this._authUser$.next(usuario);
-    return of<Usuario>(usuario);
+  //   const usuario: Usuario = {
+  //     id: 1,
+  //     nombre: 'Evelina',
+  //     apellido: 'Nuñez',
+  //     email: 'e@mail.com',
+  //     rol: 'admin'
+  //   }
+  //   this._authUser$.next(usuario);
+  //   return of<Usuario>(usuario);
 
+  // }
+  login(usuarioLogin :UsuarioLogin ){
+    this.httpClient.get<Usuario[]>(`http://localhost:3000/usuarios?email=${usuarioLogin.email}&password=${usuarioLogin.password}`)
+    .subscribe({
+      next: (respuesta)=>{
+        if(!respuesta.length){
+          alert('Usuario o contaseña invalidos');
+        }else{
+          const usuarioLogueado = respuesta[0];
+          this._authUser$.next(usuarioLogueado);
+          this.router.navigate(['/dashboard/home']);
+        }
+      },
+      error: (error)=>{
+        alert('Error de conexion');
+      }
+    });
   }
 
+  logout(): void {
+    this._authUser$.next(null);
+    this.router.navigate(['/auth/login']);
+  }
 }

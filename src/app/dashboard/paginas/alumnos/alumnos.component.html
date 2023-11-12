@@ -3,7 +3,7 @@
   mat-flat-button
   color="primary"
   class="mb-5"
-  (click)="openAlumnosDialog()"
+  (click)="addAlumnosDialog()"
   >
   <mat-icon>add</mat-icon>
   Crear Alumno
@@ -11,8 +11,8 @@
 
 
 <app-alumnos-tabla
-[dataSource]="alumnos"
-(editarAlumno)="onEditarAlumno($event)"
+[dataSource]="(alumnos$ | async) || []"
+(editarAlumno)="OnEditarAlumno($event)"
 (eliminarAlumno)="OnEliminarAlumno($event)">
 </app-alumnos-tabla>
 
