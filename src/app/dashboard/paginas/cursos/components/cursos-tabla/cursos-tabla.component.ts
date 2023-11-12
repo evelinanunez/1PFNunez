@@ -18,4 +18,5 @@ export class CursosTablaComponent {
 
   @Output()
   editarCurso = new EventEmitter<Curso>();
+
 }

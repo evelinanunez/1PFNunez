@@ -10,12 +10,17 @@
 </button>
 
 
-<app-cursos-tabla
-[dataSource]="cursos"
+<!-- <app-cursos-tabla
+[dataSource]="cursos$ || null || []"
 (editarCurso)="OnEditarCurso($event)"
 (eliminarCurso)="OnEliminarCurso($event)">
+</app-cursos-tabla> -->
+<app-cursos-tabla
+[dataSource]="(cursos$ | async) || []"
+(editarCurso)="OnEditarCurso($event)"
+(eliminarCurso)="OnEliminarCurso($event)"
+>
 </app-cursos-tabla>
-
 <!--
 
 <button
