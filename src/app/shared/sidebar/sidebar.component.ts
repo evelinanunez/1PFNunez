@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable, map } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Usuario } from 'src/app/dashboard/paginas/usuarios/models';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,9 +11,20 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class SidebarComponent {
   showFiller = false;
 
+  public authUser$: Observable<Usuario | null>;
   constructor(private authService: AuthService){
-
+      this.authUser$ = this.authService.authUser$;
   }
+
+  get nombreCompleto$(): Observable<string> {
+    return this.authUser$.pipe(
+      map((usuario) => `${usuario?.nombre} ${usuario?.apellido}`)
+    );
+  }
+  get email$(): Observable<string | undefined> {
+    return this.authUser$.pipe(map((user) => user?.email));
+  }
+
   logout(): void {
     this.authService.logout();
   }
