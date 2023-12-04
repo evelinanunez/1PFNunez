@@ -22,10 +22,8 @@ export class AlumnosDialogComponent {
       email:['',[Validators.required, Validators.email]],
       dni: ['',[Validators.required]],
       telefono: ['',[Validators.required]]
-      // fechaNacimiento: ['',[Validators.required]]
     });
     if(this.alumno){
-     // this.alumno.fechaNacimiento.getDate();
       this.alumnosForm.patchValue(this.alumno);
     }
   }

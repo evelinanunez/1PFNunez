@@ -19,7 +19,7 @@ export class UsuariosService {
             apellido: 'Nuñez',
             email: 'eve@gmail.com',
             rol: 'profesor',
-            contrasena:'1234'
+            password:'1234'
           },
           {
             id: 2,
@@ -27,7 +27,7 @@ export class UsuariosService {
             apellido: 'Nuñez',
             email: 'cris@gmail.com',
             rol: 'alumno',
-            contrasena:'1234'
+            password:'1234'
           },
           {
             id: 3,
@@ -35,7 +35,7 @@ export class UsuariosService {
             apellido: 'García',
             email: 'carlos@gmail.com',
             rol: 'administrativo',
-            contrasena:'1234'
+            password:'1234'
           },
           {
             id: 4,
@@ -43,7 +43,7 @@ export class UsuariosService {
             apellido: 'Rodríguez',
             email: 'luis@gmail.com',
             rol: 'admin',
-            contrasena:'1234'
+            password:'1234'
           },
           {
             id: 5,
@@ -51,7 +51,7 @@ export class UsuariosService {
             apellido: 'López',
             email: 'maria@gmail.com',
             rol: 'profesor',
-            contrasena:'1234'
+            password:'1234'
           },
           {
             id: 6,
@@ -59,7 +59,7 @@ export class UsuariosService {
             apellido: 'Pérez',
             email: 'juan@gmail.com',
             rol: 'alumno',
-            contrasena:'1234'
+            password:'1234'
           },
           {
             id: 7,
@@ -67,7 +67,7 @@ export class UsuariosService {
             apellido: 'Martínez',
             email: 'ana@gmail.com',
             rol: 'administrativo',
-            contrasena:'1234'
+            password:'1234'
           },
           {
             id: 8,
@@ -75,7 +75,7 @@ export class UsuariosService {
             apellido: 'Fernández',
             email: 'pedro@gmail.com',
             rol: 'admin',
-            contrasena:'1234'
+            password:'1234'
           },
           {
             id: 9,
@@ -83,7 +83,7 @@ export class UsuariosService {
             apellido: 'Sánchez',
             email: 'laura@gmail.com',
             rol: 'profesor',
-            contrasena:'1234'
+            password:'1234'
           },
           {
             id: 10,
@@ -91,7 +91,7 @@ export class UsuariosService {
             apellido: 'González',
             email: 'manuel@gmail.com',
             rol: 'alumno',
-            contrasena:'1234'
+            password:'1234'
           }
         ]
       )

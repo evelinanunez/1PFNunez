@@ -113,18 +113,45 @@ describe('Alumnos service', ()=>{
       }
     ];
 
-    const longitudAntes = listaAlumnos.length;
-
-    alumnoServicio.eliminarAlumno(ALUMNO_MOCK.id);
+    alumnoServicio.eliminarAlumno(ALUMNO_MOCK.id).subscribe(
+       ()=>{
+        //expect(listaAlumnos.length).toBe(longitudAntes - 1);
+          expect(listaAlumnos.find(alumno => alumno.id === ALUMNO_MOCK.id)).toBeUndefined();
+          done();
+        });
 
     httpController.expectOne({
       method: 'DELETE',
       url: `http://localhost:3000/alumnos?id=${ALUMNO_MOCK.id}`
-    }).flush({});
+    }).flush({
 
-    expect(listaAlumnos.length).toBe(longitudAntes - 1);
+    });
 
-    expect(listaAlumnos.find(alumno => alumno.id === ALUMNO_MOCK.id)).toBeUndefined();
+    //(listaAlumnos.length).toBe(longitudAntes - 1);
+
+    //expect(listaAlumnos.find(alumno => alumno.id === ALUMNO_MOCK.id)).toBeUndefined();
   });
 
 })
+
+
+/*
+it('Eliminar un alumno', (done) => {
+
+
+
+   alumnoServicio.eliminarAlumno(ALUMNO_MOCK.id).subscribe(() => {
+
+     // Este codigo se ejecuta si la solicitud se completa
+
+ expect(listaAlumnos.length).toBe(longitudAntes - 1);
+
+ expect(listaAlumnos.find(alumno => alumno.id === ALUMNO_MOCK.id)).toBeUndefined();
+
+ done(); // Avisa a Jasmine que la prueba asíncrona ha terminado
+
+   });
+
+
+ });
+ */

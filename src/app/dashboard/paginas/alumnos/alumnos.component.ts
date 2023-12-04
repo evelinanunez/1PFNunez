@@ -19,15 +19,6 @@ export class AlumnosComponent {
     ){
 
       this.alumnos$ = this.alumnoServicio.getAlumnos();
-  // this.alumnos$ = alumnoServicio.traerAlumnos();
-
-  // this.alumnoServicio.traerAlumnos().subscribe({
-  //   next :(v) =>{
-  //     this.alumnos = v;
-  //   },
-  //   error :()=>{},
-  //   complete: ()=>{},
-  // });
   }
 
   addAlumnosDialog() :void {
@@ -43,14 +34,6 @@ export class AlumnosComponent {
             }
           })
         }
-        // if(!! valor){
-        //   this.alumnos = [
-        //     ...this.alumnos,
-        //     {
-        //       ...valor, id: this.alumnos.length+1,
-        //     }
-        //   ]
-        // }
       }
     });
   }
@@ -60,7 +43,6 @@ export class AlumnosComponent {
         this.alumnos$ = this.alumnoServicio.getAlumnos();
       }
     });
-    // this.alumnos = this.alumnos.filter((a) => a.id !== idALumno);
   }
 
   OnEditarAlumno ( alumnoEdit : Alumno) : void{
@@ -79,12 +61,6 @@ export class AlumnosComponent {
             }
           })
         }
-
-        // if(!!v){
-        //   this.alumnos =  this.alumnos.map((u)=>
-        //   u.id === alumno.id ? { ...u, ...v } : u);
-
-        // }
       }
     });
   }

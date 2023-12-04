@@ -32,17 +32,17 @@ let httpController : HttpTestingController;
       apellido: 'Nuñez',
       email: 'eve@gmail.com',
       rol: 'profesor',
-      contrasena:'1234'
+      password:'1234'
     };
 
     authService.login({
       email : USUARIO_MOCK.email,
-      password: USUARIO_MOCK.contrasena,
+      password: USUARIO_MOCK.password,
     });
 
       httpController.expectOne({
         method:'GET',
-        url: `http://localhost:3000/usuarios?email=${USUARIO_MOCK.email}&password=${USUARIO_MOCK.contrasena}`
+        url: `http://localhost:3000/usuarios?email=${USUARIO_MOCK.email}&password=${USUARIO_MOCK.password}`
       })
       .flush([
         USUARIO_MOCK]);

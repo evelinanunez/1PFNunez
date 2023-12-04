@@ -24,10 +24,12 @@ export class LoginComponent {
   }
 
   login(): void {
+    console.log('Estoy en login ')
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
     } else {
       this.authService.login(this.loginForm.getRawValue());
+      console.log(this.loginForm.getRawValue())
     }
   }
   // login(): void {

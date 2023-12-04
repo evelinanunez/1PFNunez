@@ -5,6 +5,8 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { LoginPayload } from './paginas/models';
 import { Usuario } from '../dashboard/paginas/usuarios/models';
 import { UsuarioLogin } from './models';
+import { Store } from '@ngrx/store';
+import { AuthActions } from '../store/auth/auth.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class AuthService {
 
    public authUser$ = this._authUser$.asObservable();
 
-  constructor( private router: Router, private httpClient : HttpClient) {}
+  constructor( private router: Router, private httpClient : HttpClient, private store :Store) {}
 
   // login(): Observable<Usuario> {
 
@@ -29,7 +31,14 @@ export class AuthService {
   //   return of<Usuario>(usuario);
 
   // }
+
+  private handleAuthUser(authUser: Usuario): void {
+    this.store.dispatch(AuthActions.actualizarUsuario({ data: authUser }));
+    //localStorage.setItem('token', authUser.token);
+  }
+
   login(usuarioLogin :UsuarioLogin ){
+    console.log(usuarioLogin);
     this.httpClient.get<Usuario[]>(`http://localhost:3000/usuarios?email=${usuarioLogin.email}&password=${usuarioLogin.password}`)
     .subscribe({
       next: (respuesta)=>{
@@ -37,7 +46,9 @@ export class AuthService {
           alert('Usuario o contaseña invalidos');
         }else{
           const usuarioLogueado = respuesta[0];
-          this._authUser$.next(usuarioLogueado);
+          console.log(usuarioLogueado)
+           // this.handleAuthUser(usuarioLogueado);
+           this._authUser$.next(usuarioLogueado);
           this.router.navigate(['/dashboard/home']);
         }
       },

@@ -18,13 +18,6 @@ export class CursosComponent {
 
   constructor(private cursoServicio : CursosService,
               private matDialog : MatDialog){
-    // this.cursoServicio.traerCursos().subscribe(
-    //   {
-    //     next : (curso)=>{
-    //       this.cursos= curso;
-    //     }
-    //   }
-    // )
     this.cursos$ = this.cursoServicio.getCursos();
   }
 
@@ -34,12 +27,6 @@ export class CursosComponent {
       .subscribe({
         next: (curso)=>{
           if(!!curso){
-            // this.cursos = [
-            //   ...this.cursos,
-            //   {
-            //     ...curso , id: this.cursos.length+1,
-            //   }
-            // ]
             this.cursoServicio.crearCurso(curso)
             .subscribe({
               next : ()=>{
@@ -51,23 +38,6 @@ export class CursosComponent {
       });
   }
 
-
-
-  // OnEditarCurso  (curso  : Curso) : void {
-  //   this.matDialog
-  //   .open(CursosDialogComponent, {
-  //     data: curso,
-  //   })
-  //   .afterClosed()
-  //   .subscribe({
-  //     next : ((curso)=>{
-  //       if(!!curso){
-  //         this.cursos = this.cursos.map((c)=>
-  //         c.id === curso.id ? {...c, ...curso} : c);
-  //       }
-  //     })
-  //   });
-  // }
   OnEditarCurso( cursoEdit : Curso) :void{
     this.matDialog.open(CursosDialogComponent, {
       data : cursoEdit,
@@ -86,9 +56,6 @@ export class CursosComponent {
     })
   }
 
-  // OnEliminarCurso (idCurso : number) :void {
-  //   this.cursos$ = this.cursos$.filter((curso)=> curso.id !==idCurso);
-  // }
 
   OnEliminarCurso (IdcursoEliminar : number ) : void{
     this.cursoServicio.eliminarCurso(IdcursoEliminar).subscribe({

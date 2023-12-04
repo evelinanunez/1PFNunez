@@ -17,9 +17,6 @@ import { HomeModule } from './paginas/home/home.module';
   imports: [
     CommonModule,
     SharedModule,
-    //UsuariosModule,
-    //AlumnosModule,
-    //CursosModule,
     HomeModule,
     DashboardRoutingModule
   ],

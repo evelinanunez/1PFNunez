@@ -11,7 +11,7 @@ export class CursosTablaComponent {
   @Input()
   dataSource : Curso[] = [];
 
-  displayedColumns = ['id','nombre','descripcion','instructor','categoria','costo','acciones'];
+  displayedColumns = ['id','nombre','descripcion','instructor','categoria','costo','fechaInicio','fechaFin','acciones'];
 
   @Output()
   eliminarCurso = new EventEmitter<number>();

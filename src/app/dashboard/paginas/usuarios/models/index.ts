@@ -4,5 +4,5 @@ export interface Usuario {
   apellido :string;
   email :string;
   rol: string;
-  contrasena: string;
+  password: string;
 }
