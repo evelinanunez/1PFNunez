@@ -3,6 +3,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { UsuariosDialogComponent } from './components/usuarios-dialog/usuarios-dialog.component';
 import { Usuario } from './models';
 import { UsuariosService } from './usuarios.service';
+import { Observable } from 'rxjs';
 
 
 
@@ -12,7 +13,8 @@ import { UsuariosService } from './usuarios.service';
 })
 export class UsuariosComponent {
 
-  usuarios : Usuario[] = [];
+  usuarios$ : Observable<Usuario[]>;
+  // usuarios : Usuario[] = [];
   formulario ='';
 
   constructor(
@@ -20,13 +22,14 @@ export class UsuariosComponent {
     private usuarioServicio : UsuariosService
 
   ){
-    this.usuarioServicio.traerUsuarios().subscribe({
+    this.usuarios$ = this.usuarioServicio.traerUsuarios();
+ /*    this.usuarioServicio.traerUsuarios().subscribe({
       next :(v)=>{
         this.usuarios= v;
       },
       error :()=>{},
       complete: ()=>{},
-    });
+    }); */
   }
 
 
@@ -34,24 +37,32 @@ export class UsuariosComponent {
     this.matDialog.open(UsuariosDialogComponent)
     .afterClosed()
     .subscribe({
-      next:(valor) =>{
-        if(!!valor){
-          this.usuarios= [
-            ...this.usuarios,
-            {
-              ...valor, id: this.usuarios.length+1,
+      next:(usuario) =>{
+        if(!!usuario){
+           this.usuarioServicio.crearUsuario(usuario)
+           .subscribe({
+            next : ()=>{
+              this.usuarios$ = this.usuarioServicio.traerUsuarios();
             }
-          ];
+          })
         }
       }
     });
   }
 
-  OnEliminarUsuario ( idUsuario : number) : void{
+  /* OnEliminarUsuario ( idUsuario : number) : void{
     this.usuarios = this.usuarios.filter((a) => a.id !== idUsuario);
   }
+ */
+  OnEliminarUsuario (idUsuarioEliminar : number): void{
+    this.usuarioServicio.eliminarUsuario(idUsuarioEliminar).subscribe({
+      next: ()=>{
+        this.usuarios$  = this.usuarioServicio.traerUsuarios();
+      }
+    })
+  }
 
-  onEditarUsuario ( usuario : Usuario) : void{
+/*   onEditarUsuario ( usuario : Usuario) : void{
     this.matDialog.open(UsuariosDialogComponent,{
       data :usuario,
     })
@@ -64,5 +75,23 @@ export class UsuariosComponent {
         }
       }
     });
+  } */
+
+  onEditarUsuario (usuarioEditar : Usuario):void{
+    this.matDialog.open(UsuariosDialogComponent, {
+      data : usuarioEditar ,
+    })
+    .afterClosed()
+    .subscribe({
+      next :(usuario)=>{
+        if(!!usuario){
+          this.usuarioServicio.editarUsuario(usuarioEditar.id, usuario).subscribe({
+            next : ()=>{
+              this.usuarios$  = this.usuarioServicio.traerUsuarios();
+            }
+          })
+        }
+      }
+    })
   }
 }

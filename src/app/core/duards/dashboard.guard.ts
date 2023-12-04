@@ -9,11 +9,14 @@ export const dashboardGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const authService = inject(AuthService);
 
-  return  authService.authUser$.pipe(
-    map((usuario)=>{
-        return !!usuario ? true : router.createUrlTree(['/auth']);
-    })
-  )
+
+  return authService
+  .verifyToken()
+  .pipe(
+    map((isAuthenticated) =>
+      isAuthenticated ? true : router.createUrlTree(['/auth/login'])
+    )
+  );
 
 
 };

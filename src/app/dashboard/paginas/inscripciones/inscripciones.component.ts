@@ -39,7 +39,6 @@ export class InscripcionesComponent {
     });
   }
   OnEditarInscripcion (inscripcionEditar : Inscripcion):void{
-    console.log('Estoy Editando ')
     this.matDialog.open(InscripcionesDialogComponent, {
       data : inscripcionEditar,
     })

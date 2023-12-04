@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, map, of } from 'rxjs';
 import { LoginPayload } from './paginas/models';
 import { Usuario } from '../dashboard/paginas/usuarios/models';
 import { UsuarioLogin } from './models';
@@ -16,29 +16,17 @@ export class AuthService {
 
    public authUser$ = this._authUser$.asObservable();
 
-  constructor( private router: Router, private httpClient : HttpClient, private store :Store) {}
+  constructor( private router: Router,
+               private httpClient : HttpClient,
+              private store :Store) {}
 
-  // login(): Observable<Usuario> {
 
-  //   const usuario: Usuario = {
-  //     id: 1,
-  //     nombre: 'Evelina',
-  //     apellido: 'Nuñez',
-  //     email: 'e@mail.com',
-  //     rol: 'admin'
-  //   }
-  //   this._authUser$.next(usuario);
-  //   return of<Usuario>(usuario);
-
-  // }
-
-  private handleAuthUser(authUser: Usuario): void {
+/*   private handleAuthUser(authUser: Usuario): void {
     this.store.dispatch(AuthActions.actualizarUsuario({ data: authUser }));
     //localStorage.setItem('token', authUser.token);
-  }
+  } */
 
-  login(usuarioLogin :UsuarioLogin ){
-    console.log(usuarioLogin);
+  login(usuarioLogin :UsuarioLogin ):void{
     this.httpClient.get<Usuario[]>(`http://localhost:3000/usuarios?email=${usuarioLogin.email}&password=${usuarioLogin.password}`)
     .subscribe({
       next: (respuesta)=>{
@@ -46,9 +34,9 @@ export class AuthService {
           alert('Usuario o contaseña invalidos');
         }else{
           const usuarioLogueado = respuesta[0];
-          console.log(usuarioLogueado)
            // this.handleAuthUser(usuarioLogueado);
            this._authUser$.next(usuarioLogueado);
+           localStorage.setItem('token', usuarioLogueado.token);
           this.router.navigate(['/dashboard/home']);
         }
       },
@@ -58,8 +46,32 @@ export class AuthService {
     });
   }
 
-  logout(): void {
+  verifyToken(): Observable<boolean> {
+    return this.httpClient
+      .get<Usuario[]>(
+        `http://localhost:3000/usuarios?token=${localStorage.getItem('token')}`
+      )
+      .pipe(
+        map((users) => {
+          if (!users.length) {
+            return false;
+          } else {
+            const authUser = users[0];
+            this._authUser$.next(authUser);
+            localStorage.setItem('token', authUser.token);
+            return true;
+          }
+        })
+      );
+  }
+/*   logout(): void {
     this._authUser$.next(null);
     this.router.navigate(['/auth/login']);
+  } */
+    logout(): void {
+    this._authUser$.next(null);
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth/login']);
   }
+
 }
