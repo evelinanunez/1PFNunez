@@ -34,5 +34,8 @@ export class CursosService {
     .delete<void>(`http://localhost:3000/cursos/${idCursoAEliminar}`);
   }
 
-
+  cursoPorId(cursoId : number) : Observable<Curso>{
+    return this.httpClient
+    .get<Curso>(`http://localhost:3000/cursos/${cursoId}`);
+  }
 }

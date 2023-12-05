@@ -76,6 +76,12 @@
              *ngIf="(rol$ | async) === 'admin'">
               <mat-icon>edit</mat-icon>
              </button>
+             <button
+             [routerLink]="Curso.id"
+             mat-icon-button color="primary"
+             *ngIf="(rol$ | async) === 'admin'">
+              <mat-icon>visibility</mat-icon>
+             </button>
       </td>
        </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

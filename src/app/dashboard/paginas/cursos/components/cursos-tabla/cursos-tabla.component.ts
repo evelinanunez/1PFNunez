@@ -3,6 +3,7 @@ import { Curso } from '../../models';
 import { Observable, map } from 'rxjs';
 import { Usuario } from '../../../usuarios/models';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cursos-tabla',
@@ -12,7 +13,9 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class CursosTablaComponent {
 
   public authUser$: Observable<Usuario | null>;
-  constructor(private authService: AuthService){
+
+  constructor(private authService: AuthService,
+              private router : Router){
   this.authUser$ = this.authService.authUser$;
 }
 
@@ -30,5 +33,11 @@ get rol$ () :Observable<string | undefined> {
 
   @Output()
   editarCurso = new EventEmitter<Curso>();
+
+  detallesCurso(cursoId : number ): void {
+    this.router.navigate(['cursos','detalle', cursoId]);
+
+  }
+
 
 }
