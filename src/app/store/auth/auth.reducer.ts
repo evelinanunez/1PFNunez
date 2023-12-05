@@ -1,20 +1,24 @@
-import { createReducer, on } from "@ngrx/store";
-import { Usuario } from "src/app/dashboard/paginas/usuarios/models";
-import { AuthActions } from "./auth.actions";
+import { createReducer, on } from '@ngrx/store';
 
+import { AuthActions } from './auth.actions';
+import { Usuario } from 'src/app/dashboard/paginas/usuarios/models';
 
 export const authFeatureKey = 'auth';
 
-export interface State{
-  authUsuario : Usuario | null;
+export interface State {
+  authUser: Usuario | null;
 }
 
-const initialState : State = {
-  authUsuario: null,
-}
+const initialState: State = {
+  authUser: null,
+};
 
-export const reducer = createReducer(initialState,
-  on(AuthActions.actualizarUsuario, (state,{data})=>({...state,authUsuario:data})),
+export const reducer = createReducer(
+  initialState,
+  on(AuthActions.actualizarUsuario, (state, { data }) => ({
+    ...state,
+    authUser: data,
+  })),
 
-  on(AuthActions.restabecerAuthUsuarios, ()=> initialState)
-  )
+  on(AuthActions.restabecerAuthUsuarios, () => initialState)
+);

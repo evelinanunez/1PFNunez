@@ -22,9 +22,12 @@ export class SidebarComponent {
     );
   }
   get email$(): Observable<string | undefined> {
-    return this.authUser$.pipe(map((user) => user?.email));
+    return this.authUser$.pipe(map((usuario) => usuario?.email));
   }
 
+  get rol$(): Observable<string | undefined>{
+    return this.authUser$.pipe(map((usuario) => usuario?.rol));
+  }
   logout(): void {
     this.authService.logout();
   }
