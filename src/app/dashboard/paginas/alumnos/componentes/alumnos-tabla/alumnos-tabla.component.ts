@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Alumno } from '../../models';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Observable, map } from 'rxjs';
+import { Usuario } from '../../../usuarios/models';
 
 @Component({
   selector: 'app-alumnos-tabla',
@@ -8,10 +11,18 @@ import { Router } from '@angular/router';
 })
 export class AlumnosTablaComponent {
 
-
-  constructor( private router : Router){
-
+  public authUser$: Observable<Usuario | null>;
+  constructor( private router : Router,
+              private authService: AuthService){
+                this.authUser$ = this.authService.authUser$;
   }
+
+  get rol$ () :Observable<string | undefined> {
+    return this.authUser$.pipe(
+      map((usuario) => usuario?.rol));
+  }
+
+
   @Input()
   dataSource: Alumno[]= [];
 

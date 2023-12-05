@@ -5,7 +5,7 @@
       "nombre": "Evelina",
       "apellido": "Nuñez",
       "email": "eve@gmail.com",
-      "rol": "profesor",
+      "rol": "admin",
       "contrasena": "1234",
       "token": "jdjdjdjjdjddpff"
     },
@@ -92,15 +92,6 @@
     }
   ],
   "alumnos": [
-    {
-      "id": 3,
-      "nombre": "Luisa",
-      "apellido": "González",
-      "email": "luisa@gmail.com",
-      "dni": "555555555C",
-      "telefono": 5555555555,
-      "fechaNacimiento": "2000-02-15T00:00:00.000Z"
-    },
     {
       "id": 4,
       "nombre": "Pedro",

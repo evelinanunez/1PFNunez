@@ -22,7 +22,6 @@ export class AuthService {
               private store :Store) {}
 
 private handleAuthUser(authUser: Usuario): void {
-                // this._authUser$.next(authUser);
                 this.store.dispatch(AuthActions.actualizarUsuario({ data: authUser }));
                 localStorage.setItem('token', authUser.token);
               }
@@ -37,9 +36,7 @@ private handleAuthUser(authUser: Usuario): void {
         }else{
           const usuarioLogueado = respuesta[0];
             this.handleAuthUser(usuarioLogueado);
-           /* this._authUser$.next(usuarioLogueado);
-           localStorage.setItem('token', usuarioLogueado.token); */
-          this.router.navigate(['/dashboard/home']);
+            this.router.navigate(['/dashboard/home']);
         }
       },
       error: (error)=>{
@@ -59,21 +56,15 @@ private handleAuthUser(authUser: Usuario): void {
             return false;
           } else {
             const authUser = users[0];
-            /* this._authUser$.next(authUser); */
             this.handleAuthUser(authUser);
-            /* localStorage.setItem('token', authUser.token); */
             return true;
           }
         })
       );
   }
-/*   logout(): void {
-    this._authUser$.next(null);
-    this.router.navigate(['/auth/login']);
-  } */
+
     logout(): void {
       this.store.dispatch(AuthActions.restabecerAuthUsuarios());
-    // this._authUser$.next(null);
     localStorage.removeItem('token');
     this.router.navigate(['/auth/login']);
   }

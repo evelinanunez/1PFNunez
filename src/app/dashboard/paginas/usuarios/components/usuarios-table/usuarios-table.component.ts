@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Usuario } from '../../models';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Observable, map } from 'rxjs';
 
 
 
@@ -10,9 +12,17 @@ import { Router } from '@angular/router';
 })
 export class UsuariosTableComponent {
 
-  constructor( private router : Router){
-
+  public authUser$: Observable<Usuario | null>;
+  constructor( private router : Router,
+              private authService: AuthService){
+      this.authUser$ = this.authService.authUser$;
   }
+
+  get rol$ () :Observable<string | undefined> {
+    return this.authUser$.pipe(
+      map((usuario) => usuario?.rol));
+  }
+
   @Input()
   dataSource : Usuario[]= [];
   //Nombre de las columnas de mi tabla

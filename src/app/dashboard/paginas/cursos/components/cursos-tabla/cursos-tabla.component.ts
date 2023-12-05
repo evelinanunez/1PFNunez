@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Curso } from '../../models';
+import { Observable, map } from 'rxjs';
+import { Usuario } from '../../../usuarios/models';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-cursos-tabla',
@@ -8,6 +11,15 @@ import { Curso } from '../../models';
 })
 export class CursosTablaComponent {
 
+  public authUser$: Observable<Usuario | null>;
+  constructor(private authService: AuthService){
+  this.authUser$ = this.authService.authUser$;
+}
+
+get rol$ () :Observable<string | undefined> {
+  return this.authUser$.pipe(
+    map((usuario) => usuario?.rol));
+}
   @Input()
   dataSource : Curso[] = [];
 
