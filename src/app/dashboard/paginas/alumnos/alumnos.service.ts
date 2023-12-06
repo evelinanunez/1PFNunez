@@ -30,4 +30,8 @@ export class AlumnosService {
     return this.httpClient
     .delete<void>(`http://localhost:3000/alumnos/${idAlumnoAEliminar}`);
   }
+
+  obtenerAlumnoPorId( alumnoid : number) : Observable<Alumno> {
+    return this.httpClient.get<Alumno>(`http://localhost:3000/alumnos/${alumnoid}`)
+  }
 }
