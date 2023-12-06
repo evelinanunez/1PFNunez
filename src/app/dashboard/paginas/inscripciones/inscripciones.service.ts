@@ -10,7 +10,7 @@ export class InscripcionesService{
 
   }
   getInscripciones():Observable<Inscripcion[]>{
-    return this.httpClient.get<Inscripcion[]>(`http://localhost:3000/inscripciones`)
+    return this.httpClient.get<Inscripcion[]>(`http://localhost:3000/inscripciones?_expand=curso&_expand=alumno`)
   }
 
   crearIncripcion(inscripcionAdd : Inscripcion) : Observable<Inscripcion>{
