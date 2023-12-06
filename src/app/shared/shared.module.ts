@@ -16,6 +16,8 @@ import { MatTableModule } from '@angular/material/table';
 import { Letra20Directive } from './directives/letra20.directive';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -30,7 +32,8 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatToolbarModule,
     MatListModule,
-    RouterModule
+    RouterModule,
+    MatSelectModule
   ],
   exports: [
     SidebarComponent,
@@ -46,7 +49,8 @@ import { MatCardModule } from '@angular/material/card';
     MatTableModule,
     Letra20Directive,
     RouterModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }

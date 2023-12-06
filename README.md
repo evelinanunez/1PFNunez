@@ -1,4 +1,5 @@
 # 1PFNunez
+La base de datos esta de forma local en el archivo db.json.
 
 Usuario Admin: 
 "email": "eve@gmail.com",

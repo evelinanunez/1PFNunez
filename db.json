@@ -331,6 +331,26 @@
       "id": 2,
       "cursoId": 5,
       "alumnoId": 8
+    },
+    {
+      "id": 4,
+      "cursoId": 8,
+      "alumnoId": 10
+    },
+    {
+      "id": 5,
+      "cursoId": 7,
+      "alumnoId": 7
+    },
+    {
+      "id": 6,
+      "cursoId": 10,
+      "alumnoId": 6
+    },
+    {
+      "id": 7,
+      "cursoId": 9,
+      "alumnoId": 5
     }
   ]
 }
