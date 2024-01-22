@@ -1,13 +1,11 @@
 {
   "usuarios": [
     {
-      "id": 1,
-      "nombre": "Evelina",
+      "nombre": "Evelina c",
       "apellido": "Nuñez",
       "email": "eve@gmail.com",
       "rol": "admin",
-      "contrasena": "1234",
-      "token": "jdjdjdjjdjddpff"
+      "id": 1
     },
     {
       "id": 2,
@@ -82,13 +80,11 @@
       "token": "dgdgdgdfgfgfg"
     },
     {
-      "id": 10,
-      "nombre": "Manuel",
-      "apellido": "González",
-      "email": "manuel@gmail.com",
-      "rol": "alumno",
-      "contrasena": "1234",
-      "token": "gdfgdfgdgdgdg"
+      "nombre": "Cleopatra",
+      "apellido": "Nuñez",
+      "email": "Cleito@gmail.com",
+      "rol": "administradora",
+      "id": 10
     }
   ],
   "alumnos": [

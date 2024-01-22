@@ -8,6 +8,7 @@ import { UsuarioLogin } from './models';
 import { Store } from '@ngrx/store';
 import { AuthActions } from '../store/auth/auth.actions';
 import { selectAuthUser } from '../store/auth/auth.selectors';
+import { environment } from 'src/environments/environment.local';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ private handleAuthUser(authUser: Usuario): void {
 
 
   login(usuarioLogin :UsuarioLogin ):void{
-    this.httpClient.get<Usuario[]>(`http://localhost:3000/usuarios?email=${usuarioLogin.email}&password=${usuarioLogin.password}`)
+    this.httpClient.get<Usuario[]>(`${environment.baseUrl}/usuarios?email=${usuarioLogin.email}&password=${usuarioLogin.password}`)
     .subscribe({
       next: (respuesta)=>{
         if(!respuesta.length){
@@ -48,7 +49,7 @@ private handleAuthUser(authUser: Usuario): void {
   verifyToken(): Observable<boolean> {
     return this.httpClient
       .get<Usuario[]>(
-        `http://localhost:3000/usuarios?token=${localStorage.getItem('token')}`
+        `${environment.baseUrl}/usuarios?token=${localStorage.getItem('token')}`
       )
       .pipe(
         map((users) => {

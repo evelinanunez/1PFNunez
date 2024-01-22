@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Alumno } from './models';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.local';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class AlumnosService {
   }
 
   getAlumnos() :Observable<Alumno[]>{
-  return this.httpClient.get<Alumno[]>(`http://localhost:3000/alumnos`);
+  return this.httpClient.get<Alumno[]>(`${environment.baseUrl}/alumnos`);
   }
 
   crearAlumno (AlumnoAdd : Alumno) : Observable <Alumno>{
@@ -23,15 +24,15 @@ export class AlumnosService {
   }
 
   editarAlumno (idAlumnoEditar : number, AlumnoEditar : Alumno) : Observable<Alumno>{
-    return this.httpClient.put<Alumno>(`http://localhost:3000/alumnos/${idAlumnoEditar}`, AlumnoEditar);
+    return this.httpClient.put<Alumno>(`${environment.baseUrl}/alumnos/${idAlumnoEditar}`, AlumnoEditar);
   }
 
   eliminarAlumno( idAlumnoAEliminar : number) :  Observable <void>{
     return this.httpClient
-    .delete<void>(`http://localhost:3000/alumnos/${idAlumnoAEliminar}`);
+    .delete<void>(`${environment.baseUrl}/alumnos/${idAlumnoAEliminar}`);
   }
 
   obtenerAlumnoPorId( alumnoid : number) : Observable<Alumno> {
-    return this.httpClient.get<Alumno>(`http://localhost:3000/alumnos/${alumnoid}`)
+    return this.httpClient.get<Alumno>(`${environment.baseUrl}/alumnos/${alumnoid}`)
   }
 }

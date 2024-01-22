@@ -3,6 +3,7 @@ import { Observable, Subscriber, concatMap } from 'rxjs';
 import { Curso } from './models';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../usuarios/models';
+import { environment } from 'src/environments/environment.local';
 
 @Injectable({
   providedIn: 'root'
@@ -14,28 +15,28 @@ export class CursosService {
    }
 
   getCursos(): Observable <Curso[]>{
-    return this.httpClient.get<Curso[]>(`http://localhost:3000/cursos`)
+    return this.httpClient.get<Curso[]>(`${environment.baseUrl}/cursos`)
   }
 
 
   crearCurso( cursoAdd : Curso) : Observable<Curso>{
     return this.httpClient
-            .post<Curso>(`http://localhost:3000/cursos`,cursoAdd);
+            .post<Curso>(`${environment.baseUrl}/cursos`,cursoAdd);
 
   }
 
   editarCurso ( cursoId : number,cursoEditar : Curso) : Observable <Curso>{
     return this.httpClient
-    .put<Curso>(`http://localhost:3000/cursos/${cursoId}`, cursoEditar);
+    .put<Curso>(`${environment.baseUrl}/cursos/${cursoId}`, cursoEditar);
   }
 
   eliminarCurso( idCursoAEliminar : number) :  Observable <void>{
     return this.httpClient
-    .delete<void>(`http://localhost:3000/cursos/${idCursoAEliminar}`);
+    .delete<void>(`${environment.baseUrl}/cursos/${idCursoAEliminar}`);
   }
 
   cursoPorId(cursoId : number) : Observable<Curso>{
     return this.httpClient
-    .get<Curso>(`http://localhost:3000/cursos/${cursoId}`);
+    .get<Curso>(`${environment.baseUrl}/cursos/${cursoId}`);
   }
 }
