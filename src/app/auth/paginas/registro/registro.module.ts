@@ -2,13 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RegistroRoutingModule } from './registro-routing.module';
+import { RegistroComponent } from './registro.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    RegistroComponent
+  ],
   imports: [
     CommonModule,
-    RegistroRoutingModule
+    RegistroRoutingModule,
+    SharedModule
   ]
 })
 export class RegistroModule { }

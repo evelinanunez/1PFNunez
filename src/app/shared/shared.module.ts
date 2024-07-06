@@ -23,7 +23,6 @@ import { MatSelectModule } from '@angular/material/select';
     SidebarComponent,
     ToolbarComponent,
     NombreCompletoPipe,
-    Letra20Directive
   ],
   imports: [
     CommonModule,
@@ -47,7 +46,6 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     NombreCompletoPipe,
     MatTableModule,
-    Letra20Directive,
     RouterModule,
     MatCardModule,
     MatSelectModule
