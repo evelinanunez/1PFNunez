@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard.component";
 import { HomeComponent } from "./paginas/home/home/home.component";
-import { adminGuard } from "../core/duards/admin.guard";
+//import { adminGuard } from "../core/duards/admin.guard";
 
 const routes : Routes =[
   {
@@ -24,7 +24,7 @@ const routes : Routes =[
       },
       {
         path: 'usuarios',
-        canActivate:[adminGuard],
+        //canActivate:[adminGuard],
         loadChildren: ()=> import('./paginas/usuarios/usuarios.module').then((m)=>m.UsuariosModule)
       },
       {

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+/* import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, map, of } from 'rxjs';
@@ -49,7 +49,7 @@ private handleAuthUser(authUser: Usuario): void {
   verifyToken(): Observable<boolean> {
     return this.httpClient
       .get<Usuario[]>(
-        `${environment.baseUrl}/usuarios?token=${localStorage.getItem('token')}`
+        `${environment.urlApi}/obtenerUsuarios?token=${localStorage.getItem('token')}`
       )
       .pipe(
         map((users) => {
@@ -70,4 +70,5 @@ private handleAuthUser(authUser: Usuario): void {
     this.router.navigate(['/auth/login']);
   }
 
-}
+} */
+ 

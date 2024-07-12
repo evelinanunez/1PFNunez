@@ -15,11 +15,11 @@ import { environment } from "src/environments/environment.local";
     }
 
     registrarse(usuario : Usuario): void{
-        alert('Estoy')
         console.log(usuario)
         this.httpClient.post<Usuario>(`${environment.urlApi}/Registrarse`,usuario)
         .subscribe({
                 next: (respuesta)=>{
+                    
                 this.mensaje = 'Usuario registrado correctamente!'
             },
             error:(error)=>{

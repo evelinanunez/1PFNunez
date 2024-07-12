@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Usuario } from '../../models';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth/auth.service';
+//import { AuthService } from 'src/app/auth/auth.service';
 import { Observable, map } from 'rxjs';
+import { LoginService } from 'src/app/auth/paginas/login/login.service';
 
 
 
@@ -14,7 +15,7 @@ export class UsuariosTableComponent {
 
   public authUser$: Observable<Usuario | null>;
   constructor( private router : Router,
-              private authService: AuthService){
+              private authService: LoginService){
       this.authUser$ = this.authService.authUser$;
   }
 

@@ -15,6 +15,7 @@ export class RegistroComponent implements OnInit{
   constructor( private formBuilder : FormBuilder, private router : Router, private serviceRegistro : RegistroService){
     this.registrateForm =  this.formBuilder.group({
       nombre:['', [Validators.required]],
+      apellido:['',[Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       clave :['', [Validators.required]],
     });
@@ -30,6 +31,7 @@ export class RegistroComponent implements OnInit{
     if(this.registrateForm.valid){
       this.serviceRegistro.registrarse(this.registrateForm.value);
     }
+    this.router.navigate(['auth/login']);
   }
   login(): void {
     this.router.navigate(['auth/login']);

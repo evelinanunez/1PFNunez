@@ -2,8 +2,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Curso } from '../../models';
 import { Observable, map } from 'rxjs';
 import { Usuario } from '../../../usuarios/models';
-import { AuthService } from 'src/app/auth/auth.service';
+///import { AuthService } from 'src/app/auth/auth.service';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/auth/paginas/login/login.service';
 
 @Component({
   selector: 'app-cursos-tabla',
@@ -14,7 +15,7 @@ export class CursosTablaComponent {
 
   public authUser$: Observable<Usuario | null>;
 
-  constructor(private authService: AuthService,
+  constructor(private authService: LoginService,
               private router : Router){
   this.authUser$ = this.authService.authUser$;
 }

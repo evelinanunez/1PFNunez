@@ -19,9 +19,9 @@
     </mat-form-field>
     <mat-form-field class="w-100">
       <mat-label>Contraseña</mat-label>
-      <input formControlName="password" matInput type="password" />
+      <input formControlName="clave" matInput type="clave" />
       <mat-error>
-        <ng-container *ngIf="loginForm.get('password')?.hasError('required')">
+        <ng-container *ngIf="loginForm.get('clave')?.hasError('required')">
           Este campo es requerido
         </ng-container>
 <!--         <ng-container *ngIf="loginForm.get('email')?.hasError('email')">
@@ -38,6 +38,9 @@
     </div>
   </div>
 </form>
+<div *ngIf="errorMessage != ''">
+{{errorMessage}}
+</div>
   <div class="row justify-content-center mt-3">
     <div class="col-md-6 text-center">
       <a  (click)="registrate()" class="btn btn-link">Registrate</a>
